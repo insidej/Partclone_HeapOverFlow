@@ -39,4 +39,3 @@ $1 = (unsigned long *) 0x8057d38
 $2 = 31922
 (gdb)
 
-
