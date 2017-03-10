@@ -16,26 +16,63 @@ root@ubuntu:/partclone-0.2.89# gdb ./partclone.chkimg
 
 Reading symbols from ./partclone.chkimg...done.
 (gdb) r -s hack.img
+
 Starting program: partclone-0.2.89/src/partclone.chkimg -s hack.img
+
 [Thread debugging using libthread_db enabled]
+
 Using host libthread_db library "/lib/i386-linux-gnu/libthread_db.so.1".
+
 Partclone v0.2.89 http://partclone.org
+
 Starting to check image (hack.img)
+
 we need memory: 137438984768 bytes
+
+
 image head 4160, bitmap 137438979580, crc 1028 bytes
+
+
 Calculating bitmap... Please wait... image_hdr : 10000032fc8
+
+
 totalblock size : 1099511836616
 
+
 Program received signal SIGSEGV, Segmentation fault.
+
+
 0x0804ed96 in pc_clear_bit (total=1099511836616, bitmap=0x8057d38, nr=1021504) at bitmap.h:53
+
+
 53              bitmap[offset] &= ~(1UL << bit);
+
+
 (gdb) x/x bitmap
+
+
 0x8057d38:      0xffffffff
+
+
 (gdb) p bitmap
+
+
 $1 = (unsigned long *) 0x8057d38
+
+
 (gdb) x/x bitmap+offset
+
+
 0x8077000:      Cannot access memory at address 0x8077000		// Out of Heap memory area
+
+
 (gdb) p offset
+
+
 $2 = 31922
+
+
 (gdb)
+
+
 
