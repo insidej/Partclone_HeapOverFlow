@@ -2,6 +2,7 @@
 
 
 Partclone.chkimg that checks image has a vulnerability with openning a maliciusly craft image file.
+
 It causes Denial-Of-Service.
 <br><br>
 
