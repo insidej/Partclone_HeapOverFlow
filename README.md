@@ -1,5 +1,6 @@
-# Partclone_HeapOverFlow
+# Partclone_HeapOverFlow (DoS) - patched
 
+CVE Reference : https://www.cvedetails.com/cve/CVE-2017-6596/
 
 Partclone.chkimg that checks image has a vulnerability with openning a maliciusly craft image file.
 
